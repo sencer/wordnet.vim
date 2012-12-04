@@ -79,7 +79,7 @@ function! s:WordNetOpenWindow (text)
   setlocal nomodifiable
 
   mapclear <buffer>
-  nmap <buffer> q <c-u>:q<CR>
+  nmap <buffer> q :q<CR>
   syn match overviewHeader      /^Overview of .\+/
   syn match definitionEntry  /\v^[0-9]+\. .+$/ contains=numberedList,word
   syn match numberedList  /\v^[0-9]+\. / contained
