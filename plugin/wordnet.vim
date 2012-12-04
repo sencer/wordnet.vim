@@ -21,7 +21,7 @@ command! -nargs=+ Wn call WordNetOverviews("<args>")
 
 noremap  <Leader>wnd "wyiw:call WordNetOverviews(@w)<CR>
 noremap  <Leader>wnb "wyiw:call WordNetBrowse(@w)<CR>
-noremap  <Leader>wns "wyiw:call WordNetSynonyms(@w)<CR>"
+noremap  <Leader>wns "wyiw:call WordNetSynonyms(@w)<CR>
 
 let s:wordnet_buffer_id = -1
 
@@ -41,8 +41,8 @@ function! WordNetOverviews (word)
   call s:WordNetOpenWindow(definition)
 endfunction
 
-function! WordNetSynonyms (word)
-  let synonyms = system(g:wordnet_path . "wn " . a:word . " -synsn -synsv -synsa -synsr")
+function! WordNetOverviews (word)
+  let synonyms = system(g:wordnet_path . "wn " . a:word . " -over")
   if synonyms == ""
     let synonyms = "Word not found: " . a:word
   endif
@@ -80,11 +80,12 @@ function! s:WordNetOpenWindow (text)
 
   mapclear <buffer>
   nmap <buffer> q :q<CR>
-  syn match overviewHeader      /^Overview of .\+/
-  syn match definitionEntry  /\v^[0-9]+\. .+$/ contains=numberedList,word
-  syn match numberedList  /\v^[0-9]+\. / contained
-  syn match word  /\v([0-9]+\.[0-9\(\) ]*)@<=[^-]+/ contained
-  hi link overviewHeader Title
-  hi link numberedList Operator
-  hi def word term=bold cterm=bold gui=bold
+  "syn match overviewHeader      /^Overview of .\+/
+  "
+  "syn match definitionEntry  /\v^[0-9]+\. .+$/ contains=numberedList,word
+  "syn match numberedList  /\v^[0-9]+\. / contained
+  "syn match word  /\v([0-9]+\.[0-9\(\) ]*)@<=[^-]+/ contained
+  "hi link overviewHeader Title
+  "hi link numberedList Operator
+  "hi def word term=bold cterm=bold gui=bold
 endfunction
