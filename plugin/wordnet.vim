@@ -14,12 +14,15 @@
 " 2) highlight or put your cursor over a word, and:
 " <Leader>wnd - Define the word
 " <Leader>wnb - Launch the wordnet browser for the word.
+" <Leader>wns - Find synonyms for the word
 
 command! -nargs=+ Wordnet call WordNetOverviews("<args>")
 command! -nargs=+ Wn call WordNetOverviews("<args>")
 
 noremap  <Leader>wnd "wyiw:call WordNetOverviews(@w)<CR>
 noremap  <Leader>wnb "wyiw:call WordNetBrowse(@w)<CR>
+noremap  <Leader>wns "wyiw:call WordNetSynonyms(@w)<CR>"
+
 let s:wordnet_buffer_id = -1
 
 if !exists('g:wordnet_path')
@@ -37,6 +40,15 @@ function! WordNetOverviews (word)
   endif
   call s:WordNetOpenWindow(definition)
 endfunction
+
+function! WordNetSynonyms (word)
+  let synonyms = system(g:wordnet_path . "wn " . a:word . " -synsn -synsv -synsa -synsr")
+  if synonyms == ""
+    let synonyms = "Word not found: " . a:word
+  endif
+  call s:WordNetOpenWindow(synonyms)
+endfunction
+
 
 function! s:WordNetOpenWindow (text)
   " If the buffer is visible
