@@ -1,6 +1,6 @@
 # USAGE #
 
-Highlight or put your cursor over a word, and:
+highlight or put your cursor over a word, and:
 
 * `<Leader>wnd` - Define the word
 * `<Leader>wnb` - Launch the wordnet browser for the word.

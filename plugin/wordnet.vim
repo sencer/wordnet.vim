@@ -16,7 +16,7 @@
 " <Leader>wnb - Launch the wordnet browser for the word.
 " <Leader>wns - Find synonyms for the word
 
-command! -nargs=+ Wordnet call WordNetOverviews("<args>")
+command! -nargs=+ Wordnet all WordNetOverviews("<args>")
 command! -nargs=+ Wn call WordNetOverviews("<args>")
 
 noremap  <Leader>wnd "wyiw:call WordNetOverviews(@w)<CR>
@@ -51,6 +51,7 @@ endfunction
 
 
 function! s:WordNetOpenWindow (text)
+
   " If the buffer is visible
   if bufwinnr("__WordNet__") > -1
     " switch to it
@@ -78,6 +79,7 @@ function! s:WordNetOpenWindow (text)
   setlocal nomodifiable
 
   mapclear <buffer>
+  nmap <buffer> q <c-u>:q<CR>
   syn match overviewHeader      /^Overview of .\+/
   syn match definitionEntry  /\v^[0-9]+\. .+$/ contains=numberedList,word
   syn match numberedList  /\v^[0-9]+\. / contained
