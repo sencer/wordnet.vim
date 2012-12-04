@@ -41,8 +41,8 @@ function! WordNetOverviews (word)
   call s:WordNetOpenWindow(definition)
 endfunction
 
-function! WordNetOverviews (word)
-  let synonyms = system(g:wordnet_path . "wn " . a:word . " -over")
+function! WordNetSynonyms (word)
+  let synonyms = system(g:wordnet_path . "wn " . a:word . " -synsn -synsv -synsa -synsr")
   if synonyms == ""
     let synonyms = "Word not found: " . a:word
   endif
