@@ -16,8 +16,7 @@
 " <Leader>wnb - Launch the wordnet browser for the word.
 " <Leader>wns - Find synonyms for the word
 
-command! -nargs=+ Wordnet all WordNetOverviews("<args>")
-command! -nargs=+ Wn call WordNetOverviews("<args>")
+command! -nargs=+ Wordnet call wordnet#overviews("<args>")
 
 noremap  <Leader>wnd "wyiw:call WordNetOverviews(@w)<CR>
 noremap  <Leader>wnb "wyiw:call WordNetBrowse(@w)<CR>
