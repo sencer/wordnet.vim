@@ -2,8 +2,8 @@
 
 highlight or put your cursor over a word, and:
 
-* `<Leader>wnd` - Define the word
-* `<Leader>wnb` - Launch the wordnet browser for the word.
-* `<Leader>wns` - Find synonyms for the word
+* `F7` - Define the word
+* `Shift-F7` - Find synonyms for the word
+* `Ctrl-Shift-F7` - Launch the wordnet browser for the word.
 
 
